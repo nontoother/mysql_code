@@ -1,0 +1,12 @@
+题目：196 删除重复的电子邮箱
+
+delete from Person
+where Id not in
+(select t.tId 
+from 
+(select min(Id) tId
+from
+    Person
+group by Email) t)
+
+-- delete from Person where Id not in (select p.minid from (select min(Id) as minid from Person group by Email) as p)
