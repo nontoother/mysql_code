@@ -1,0 +1,10 @@
+题目：177 第N高的薪水
+
+BEGIN
+  SET n = N - 1;
+  RETURN (
+      select distinct Salary
+      from Employee
+      order by Salary desc limit n,1
+  );
+END
