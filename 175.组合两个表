@@ -1,0 +1,10 @@
+题目：175 组合两个表
+
+select
+    FirstName,
+    LastName,
+    City,
+    State
+from
+    Person ps
+    left join Address ar on ps.PersonId = ar.PersonId
