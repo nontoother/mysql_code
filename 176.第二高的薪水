@@ -1,0 +1,5 @@
+题目：176 第二高的薪水
+
+select max(Salary) SecondHighestSalary
+from Employee
+where salary not in (select max(Salary) from Employee)
