@@ -1,0 +1,19 @@
+题目：180 连续出现的数字
+
+SELECT DISTINCT Num AS ConsecutiveNums
+FROM (SELECT Num,
+             CASE
+                 WHEN @prev = Num
+                     THEN @count := @count + 1
+                 WHEN (@prev := Num) IS NOT NULL
+                     THEN @count := 1
+                 END AS counts
+      FROM `Logs`,
+           (SELECT @prev := NULL, @count := NULL) AS init
+     ) AS tmp
+WHERE tmp.counts >= 3
+
+-- SELECT Distinct Num AS ConsecutiveNums
+-- FROM Logs
+-- WHERE Num=(select b.Num from Logs b where b.Id=Logs.Id+1 )
+-- AND Num=(select b.Num from Logs b where b.Id=Logs.Id-1 )
