@@ -1,0 +1,6 @@
+题目：178 分数排名
+
+select a.Score, 
+(select count(distinct b.Score) from Scores as b where b.Score >= a.Score) Rank
+from Scores as a
+order by Score desc
